@@ -11,13 +11,7 @@ $stmt->execute();
 $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Agenda de Contactos</title>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-<body>
+<?php include("includes/header.php"); ?>
 
 <h1>Agenda de contactos</h1>
 
@@ -46,5 +40,4 @@ $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 </table>
 
-</body>
-</html>
+<?php include("includes/footer.php"); ?>

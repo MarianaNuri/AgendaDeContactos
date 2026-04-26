@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
 
 *,
 *::before,
@@ -16,6 +17,8 @@ html {
 body {
     font-family: 'Inter', sans-serif;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     background: linear-gradient(135deg, #e0f2ff 0%, #f5fbff 100%);
     background-size: 300% 300%;
     animation: gradientShift 12s ease infinite;
@@ -532,6 +535,106 @@ body {
     }
 }
 
+/* ========== CONTACT DETAIL CARD (ver.php) ========== */
+
+
+/* ---------- CARD DETAIL ---------- */
+.card-detail {
+    text-align: center;
+    max-width: 560px;
+}
+
+/* ---------- FOTO ARRIBA ---------- */
+.detail-photo {
+    width: 130px;
+    height: 130px;
+    margin: 0 auto 1.2rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(119, 204, 255, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 80, 0.25);
+    transition: transform .3s, box-shadow .3s;
+}
+
+.detail-photo:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 28px rgba(0, 0, 80, 0.35);
+}
+
+.detail-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ---------- NOMBRE GRANDE ---------- */
+.detail-name {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    letter-spacing: .3px;
+    text-shadow: 0 2px 8px rgba(0, 0, 80, 0.2);
+}
+
+/* ---------- INFO ROWS ---------- */
+.detail-info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-row {
+    display: flex;
+    align-items: flex-start;
+    gap: .8rem;
+    padding: .75rem 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(119, 204, 255, 0.12);
+    border-radius: 12px;
+    transition: background .25s, transform .2s;
+}
+
+.detail-row:hover {
+    background: rgba(255, 255, 255, 0.14);
+    transform: translateX(4px);
+}
+
+.detail-row > i {
+    font-size: 1.1rem;
+    color: #77CCFF;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.detail-row > div {
+    display: flex;
+    flex-direction: column;
+    gap: .15rem;
+    min-width: 0;
+}
+
+.detail-label {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: #77CCFF;
+}
+
+.detail-value {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: #ffffff;
+    word-break: break-word;
+}
+
 /* ========== CONTACTS PAGE (index.php) ========== */
 
 /* ---------- CONTAINER ---------- */
@@ -540,6 +643,7 @@ body {
     max-width: 960px;
     margin: 2rem auto;
     padding: 0 1.5rem;
+    flex: 1;
     animation: cardEntry .6s cubic-bezier(.22,1,.36,1) both;
 }
 

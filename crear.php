@@ -1,33 +1,57 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Crear contacto</title>
-</head>
-<body>
+<?php include("includes/header.php"); ?>
 
-<h2>Nuevo Contacto</h2>
+<div class="card">
+    <h2>Nuevo Contacto</h2>
 
-<form action="guardar.php" method="POST" enctype="multipart/form-data">
+    <form action="guardar.php" method="POST" enctype="multipart/form-data">
 
-    <input type="text" name="nombre" placeholder="Nombre" required><br><br>
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. María" required>
+        </div>
 
-    <input type="text" name="apellido" placeholder="Apellido"><br><br>
+        <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input type="text" id="apellido" name="apellido" placeholder="Ej. López">
+        </div>
 
-    <input type="text" name="telefono" placeholder="Teléfono" required><br><br>
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" id="telefono" name="telefono" placeholder="Ej. 555-123-4567" required>
+        </div>
 
-    <input type="file" name="foto" required><br><br>
+        <div class="form-group">
+            <label for="foto">Foto</label>
+            <div class="file-wrapper">
+                <span class="file-icon">📷</span>
+                <span class="file-text">Haz clic o arrastra una imagen</span>
+                <input type="file" id="foto" name="foto" accept="image/*" required>
+            </div>
+        </div>
 
-    <input type="email" name="email" placeholder="Email"><br><br>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="Ej. maria@correo.com">
+        </div>
 
-    <input type="text" name="direccion" placeholder="Dirección"><br><br>
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Ej. Calle Principal #123">
+        </div>
 
-    <textarea name="notas" placeholder="Notas"></textarea><br><br>
+        <div class="form-group">
+            <label for="notas">Notas</label>
+            <textarea id="notas" name="notas" placeholder="Escribe notas adicionales..."></textarea>
+        </div>
 
-    <button type="submit">Guardar</button>
+        <button type="submit" class="btn-submit"><span>Guardar Contacto</span></button>
 
-</form>
+    </form>
 
-<a href="index.php"> Volver</a>
+    <a href="index.php" class="back-link">
+        <span class="arrow">←</span> Volver a la agenda
+    </a>
+</div>
 
 </body>
 </html>

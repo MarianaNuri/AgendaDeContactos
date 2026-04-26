@@ -3,7 +3,7 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ?>
 <?php
-require("config/db.php");
+require("config/bd.php");
 
 $sql = "SELECT * FROM contactos ORDER BY id DESC";
 $stmt = $pdo->prepare($sql);

@@ -1,12 +1,12 @@
 <aside class="sidebar" id="sidebar">
 
-    <!-- Encabezado del sidebar -->
+    <!-- encabezado del sidebar -->
     <div class="sidebar-header">
         <i class="bi bi-journal-bookmark-fill sidebar-logo"></i>
         <span class="sidebar-title">Agenda</span>
     </div>
 
-    <!-- Navegación principal -->
+    <!-- navegación principal -->
     <nav class="sidebar-nav">
         <a href="index.php" class="sidebar-link">
             <i class="bi bi-house-door-fill"></i>
@@ -22,7 +22,7 @@
         </a>
     </nav>
 
-    <!-- Pie del sidebar -->
+    <!-- pie del sidebar -->
     <div class="sidebar-footer">
         <p>&copy; <?php echo date('Y'); ?> Agenda</p>
     </div>

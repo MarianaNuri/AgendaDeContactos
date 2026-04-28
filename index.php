@@ -69,7 +69,7 @@ $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <a href="editar.php?id=<?php echo $c['id']; ?>" class="btn-action btn-edit" title="Editar">
                                 <i class="bi bi-pencil-fill"></i>
                             </a>
-                            <a href="eliminar.php?id=<?php echo $c['id']; ?>" class="btn-action btn-delete" title="Eliminar" onclick="return confirm('¿Estás seguro de eliminar este contacto?');">
+                            <a href="#" class="btn-action btn-delete" title="Eliminar" onclick="openDeleteModal(<?php echo $c['id']; ?>, '<?php echo htmlspecialchars($c['nombre'] . ' ' . $c['apellido'], ENT_QUOTES); ?>')">
                                 <i class="bi bi-trash-fill"></i>
                             </a>
                         </div>
@@ -82,5 +82,46 @@ $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endif; ?>
 
 </div>
+
+<!-- Modal de confirmación para eliminar -->
+<div class="delete-modal-overlay" id="deleteModalOverlay">
+    <div class="delete-modal">
+        <div class="delete-modal-icon">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+        </div>
+        <h3 class="delete-modal-title">¿Eliminar contacto?</h3>
+        <p class="delete-modal-text">Estás a punto de eliminar a <strong id="deleteContactName"></strong>. Esta acción no se puede deshacer.</p>
+        <div class="delete-modal-actions">
+            <button type="button" class="btn-modal btn-modal-cancel" onclick="closeDeleteModal()">Cancelar</button>
+            <a href="#" class="btn-modal btn-modal-confirm" id="deleteConfirmBtn">
+                <i class="bi bi-trash-fill"></i> Eliminar
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+function openDeleteModal(id, nombre) {
+    document.getElementById('deleteContactName').textContent = nombre;
+    document.getElementById('deleteConfirmBtn').href = 'eliminar.php?id=' + id;
+    document.getElementById('deleteModalOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeDeleteModal() {
+    document.getElementById('deleteModalOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// Cerrar modal al hacer clic fuera
+document.getElementById('deleteModalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closeDeleteModal();
+});
+
+// Cerrar modal con Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeDeleteModal();
+});
+</script>
 
 <?php include("includes/footer.php"); ?>

@@ -45,7 +45,11 @@ include("includes/header.php");
 
         <div class="form-group">
             <label>Nueva foto</label>
-            <input type="file" name="foto">
+            <div class="file-wrapper">
+                <span class="file-icon">📷</span>
+                <span class="file-text">Haz clic o arrastra una imagen</span>
+                <input type="file" name="foto" accept="image/*">
+            </div>
         </div>
 
         <div class="form-group">

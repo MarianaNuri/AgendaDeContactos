@@ -535,16 +535,16 @@ body {
     }
 }
 
-/* ========== CONTACT DETAIL CARD (ver.php) ========== */
+/* ========== CARD PARA VER LOS CONTACTOS ========== */
 
 
-/* ---------- CARD DETAIL ---------- */
+/* ---------- DETALLES ---------- */
 .card-detail {
     text-align: center;
     max-width: 560px;
 }
 
-/* ---------- FOTO ARRIBA ---------- */
+/* ---------- FOTO ---------- */
 .detail-photo {
     width: 130px;
     height: 130px;
@@ -579,7 +579,7 @@ body {
     text-shadow: 0 2px 8px rgba(0, 0, 80, 0.2);
 }
 
-/* ---------- INFO ROWS ---------- */
+/* ---------- INFORMACION DEL CONTACTO ---------- */
 .detail-info {
     text-align: left;
     display: flex;
@@ -635,7 +635,7 @@ body {
     word-break: break-word;
 }
 
-/* ========== CONTACTS PAGE (index.php) ========== */
+/* ========== REGISTRO DE CONTACTOS========== */
 
 /* ---------- CONTAINER ---------- */
 .contacts-container {
@@ -714,7 +714,7 @@ body {
     z-index: 1;
 }
 
-/* ---------- EMPTY STATE ---------- */
+/* ---------- Si NO HAY CONTACTOS ---------- */
 .contacts-empty {
     text-align: center;
     padding: 3rem 1.5rem;
@@ -733,7 +733,7 @@ body {
     font-weight: 500;
 }
 
-/* ---------- TABLE WRAPPER ---------- */
+/* ---------- TABLA ---------- */
 .contacts-table-wrapper {
     background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(14px);
@@ -744,13 +744,12 @@ body {
     overflow: hidden;
 }
 
-/* ---------- TABLE ---------- */
 .contacts-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-/* ---------- THEAD ---------- */
+/* ---------- ENCABEZADO ---------- */
 .contacts-table thead tr {
     background: linear-gradient(135deg, #0044FF, #3388FF);
 }
@@ -776,7 +775,7 @@ body {
     text-align: center;
 }
 
-/* ---------- TBODY ---------- */
+/* ---------- CUERPO DE LA TABLA---------- */
 .contacts-table tbody tr {
     transition: background .25s, transform .2s;
     border-bottom: 1px solid rgba(0, 68, 255, 0.06);
@@ -802,7 +801,7 @@ body {
     }
 }
 
-/* Stagger animation delay for rows */
+/* ANIMACION PARA LAS FILAS */
 .contacts-table tbody tr:nth-child(1) { animation-delay: .05s; }
 .contacts-table tbody tr:nth-child(2) { animation-delay: .10s; }
 .contacts-table tbody tr:nth-child(3) { animation-delay: .15s; }
@@ -814,7 +813,7 @@ body {
 .contacts-table tbody tr:nth-child(9) { animation-delay: .45s; }
 .contacts-table tbody tr:nth-child(10) { animation-delay: .50s; }
 
-/* ---------- TD ---------- */
+/* ---------- CELDAS DE LA TABLA--------- */
 .contacts-table td {
     padding: .85rem 1rem;
     vertical-align: middle;
@@ -850,14 +849,14 @@ body {
     display: block;
 }
 
-/* ---------- NAME ---------- */
+/* ---------- NOMBRE ---------- */
 .contact-name {
     font-weight: 600;
     color: #1a2a4a;
     font-size: .95rem;
 }
 
-/* ---------- PHONE & EMAIL ---------- */
+/* ---------- EMAIL Y TELFONO ---------- */
 .contact-phone,
 .contact-email {
     display: inline-flex;
@@ -873,7 +872,7 @@ body {
     color: #55AAFF;
 }
 
-/* ---------- ACTION BUTTONS ---------- */
+/* ---------- BOTONES DE ACCIONES ---------- */
 .contact-actions {
     display: flex;
     align-items: center;
@@ -932,7 +931,7 @@ body {
     box-shadow: 0 4px 12px rgba(255, 59, 59, 0.3);
 }
 
-/* ---------- ZEBRA STRIPES ---------- */
+/* ---------- FILAS ALTERNAS ---------- */
 .contacts-table tbody tr:nth-child(even) {
     background: rgba(0, 68, 255, 0.02);
 }
@@ -941,7 +940,7 @@ body {
     background: rgba(0, 68, 255, 0.06);
 }
 
-/* ========== CONTACTS TABLE RESPONSIVE ========== */
+/* ========== TABLA DE CONTACTOS RESPOSIVE ========== */
 @media (max-width: 700px) {
     .contacts-container {
         padding: 0 .8rem;
@@ -962,7 +961,7 @@ body {
         justify-content: center;
     }
 
-    /* Card layout for mobile */
+    /* CARD LAYOUT*/
     .contacts-table-wrapper {
         background: transparent;
         border: none;
@@ -1036,4 +1035,150 @@ body {
         height: 64px;
         border-radius: 16px;
     }
+}
+
+/* ==========CUADRO DE CONFIRMACION PARA BORRAR ========== */
+
+/* ---------- OVERLAY ---------- */
+.delete-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 30, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease, visibility .3s ease;
+}
+
+.delete-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ---------- MODAL CARD ---------- */
+.delete-modal {
+    background: linear-gradient(135deg, #0044FF, #3388FF);
+    border: 1px solid rgba(119, 204, 255, 0.2);
+    border-radius: 20px;
+    padding: 2.2rem 2rem;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    box-shadow:
+        0 12px 48px rgba(0, 0, 80, 0.45),
+        inset 0 0 60px rgba(85, 170, 255, 0.06);
+    transform: scale(.85) translateY(20px);
+    transition: transform .35s cubic-bezier(.22,1,.36,1), opacity .35s ease;
+    opacity: 0;
+}
+
+.delete-modal-overlay.active .delete-modal {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+}
+
+/* ---------- ICONO DE ADVERTENCIA ---------- */
+.delete-modal-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 59, 59, 0.15);
+    border: 2px solid rgba(255, 59, 59, 0.3);
+    border-radius: 50%;
+    animation: iconPulse 2s ease-in-out infinite;
+}
+
+.delete-modal-icon i {
+    font-size: 1.6rem;
+    color: #ff6b6b;
+}
+
+@keyframes iconPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 59, 59, 0.2); }
+    50%      { box-shadow: 0 0 0 10px rgba(255, 59, 59, 0); }
+}
+
+/* ---------- TITULO ---------- */
+.delete-modal-title {
+    font-family: 'Outfit', 'Inter', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: .6rem;
+}
+
+/* ----------TEXTO ---------- */
+.delete-modal-text {
+    font-size: .92rem;
+    color: #b8daff;
+    line-height: 1.5;
+    margin-bottom: 1.8rem;
+}
+
+.delete-modal-text strong {
+    color: #ffffff;
+}
+
+/* ---------- BOTONES ---------- */
+.delete-modal-actions {
+    display: flex;
+    gap: .75rem;
+    justify-content: center;
+}
+
+.btn-modal {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    padding: .7rem 1.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: .9rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .3s, background .3s;
+    border: none;
+}
+
+/* CANCELAR */
+.btn-modal-cancel {
+    background: rgba(255, 255, 255, 0.12);
+    color: #e0ecff;
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-modal-cancel:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 80, 0.2);
+}
+
+/* BOTON DE ELIMINAR */
+.btn-modal-confirm {
+    background: linear-gradient(135deg, #ff3b3b, #ff6b6b);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(255, 59, 59, 0.35);
+}
+
+.btn-modal-confirm:hover {
+    background: linear-gradient(135deg, #e02020, #ff4a4a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(255, 59, 59, 0.5);
+    color: #ffffff;
+}
+
+.btn-modal-confirm:active,
+.btn-modal-cancel:active {
+    transform: translateY(0);
 }

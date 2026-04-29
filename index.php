@@ -93,9 +93,13 @@ $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p class="delete-modal-text">Estás a punto de eliminar a <strong id="deleteContactName"></strong>. Esta acción no se puede deshacer.</p>
         <div class="delete-modal-actions">
             <button type="button" class="btn-modal btn-modal-cancel" onclick="closeDeleteModal()">Cancelar</button>
-            <a href="#" class="btn-modal btn-modal-confirm" id="deleteConfirmBtn">
+            <form action="eliminar.php" method="POST">
+                <input type="hidden" name="id" id="deleteId">
+
+                <button type="submit" class="btn-modal btn-modal-confirm">
                 <i class="bi bi-trash-fill"></i> Eliminar
-            </a>
+                </button>
+            </form>
         </div>
     </div>
 </div>
@@ -103,7 +107,7 @@ $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <script>
 function openDeleteModal(id, nombre) {
     document.getElementById('deleteContactName').textContent = nombre;
-    document.getElementById('deleteConfirmBtn').href = 'eliminar.php?id=' + id;
+    document.getElementById('deleteId').value = id;
     document.getElementById('deleteModalOverlay').classList.add('active');
     document.body.style.overflow = 'hidden';
 }

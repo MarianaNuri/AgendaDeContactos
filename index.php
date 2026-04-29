@@ -40,22 +40,27 @@ $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             Agenda de contactos
         </h2>
 
-        <form method="GET" action="index.php" class="search-form">
-        <input 
-            type="text" 
-            name="buscar" 
-            placeholder="Buscar contacto..." 
-            value="<?php echo htmlspecialchars($buscar); ?>"
-        >
-        <button type="submit">
-            <i class="bi bi-search"></i>
-        </button>
+        <form method="GET" action="index.php" class="search-bar">
+
+            <div class="search-input-wrapper">
+                 <i class="bi bi-search"></i>
+                 <input 
+                  type="text" 
+                  name="buscar" 
+                  placeholder="Buscar contacto..." 
+                  value="<?php echo htmlspecialchars($buscar); ?>"
+                 >
+            </div>
+
+            <button type="submit" class="btn-search">
+            Buscar
+            </button>
+
+            <?php if (!empty($buscar)): ?>
+            <a href="index.php" class="btn-clear">Limpiar</a>
+            <?php endif; ?>
+
         </form>
-
-        <?php if (!empty($buscar)): ?>
-        <a href="index.php" style="font-size: .8rem;">Limpiar búsqueda</a>
-        <?php endif; ?>
-
 
         <a href="crear.php" class="btn-new-contact">
             <i class="bi bi-plus-circle-fill"></i>

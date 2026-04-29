@@ -946,6 +946,18 @@ body {
         padding: 0 .8rem;
     }
 
+@media (max-width: 700px) {
+
+    .contacts-header {
+        gap: .8rem; 
+    }
+
+    .search-bar {
+        width: 100%;
+    }
+
+}
+
     .contacts-header {
         flex-direction: column;
         align-items: stretch;
@@ -1184,6 +1196,9 @@ body {
 }
 
 ---------------------------------------------------
+
+
+
 .search-bar {
     display: flex;
     align-items: center;
@@ -1191,6 +1206,8 @@ body {
     margin-bottom: 1.2rem;
     /*flex-wrap: wrap;*/
     flex-wrap: nowrap; 
+    width: 100%;
+    margin: .5rem 0 1rem 0;
 }
 
 
@@ -1206,12 +1223,14 @@ body {
     border-radius: 12px;
     border: 1px solid rgba(0, 68, 255, 0.15);
     transition: box-shadow .25s, border .25s;
-    min-width: 180px;
+    /*min-width: 180px;*/
+    min-width: 0;
 }
 
 .search-input-wrapper i {
     color: #3388FF;
     font-size: .9rem;
+
 }
 
 .search-input-wrapper input {
@@ -1246,6 +1265,7 @@ body {
     transition: transform .2s, box-shadow .3s;
     box-shadow: 0 4px 14px rgba(0, 68, 255, 0.25);
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .btn-search:hover {
@@ -1263,6 +1283,7 @@ body {
     border-radius: 8px;
     transition: background .25s, color .25s;
     white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .btn-clear:hover {

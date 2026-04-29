@@ -1,13 +1,4 @@
 <?php include("includes/header.php"); ?>
-<form method="GET" action="index.php" class="search-form">
-    <input 
-        type="text" 
-        name="buscar" 
-        placeholder="Buscar contacto..." 
-        value="<?php echo isset($_GET['buscar']) ? htmlspecialchars($_GET['buscar']) : ''; ?>"
-    >
-    <button type="submit">Buscar</button>
-</form>
 
 <div class="card">
     <h2>Nuevo Contacto</h2>

@@ -5,9 +5,28 @@ ini_set('display_errors', 1);
 <?php
 require("config/bd.php");
 
-$sql = "SELECT * FROM contactos ORDER BY id DESC";
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
+$buscar = "";
+
+if (isset($_GET["buscar"]) && !empty($_GET["buscar"])) {
+    $buscar = htmlspecialchars($_GET["buscar"]);
+
+    $sql = "SELECT * FROM contactos 
+            WHERE nombre LIKE :buscar 
+            OR apellido LIKE :buscar 
+            OR telefono LIKE :buscar 
+            OR email LIKE :buscar
+            ORDER BY id DESC";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+        ":buscar" => "%" . $buscar . "%"
+    ]);
+} else {
+    $sql = "SELECT * FROM contactos ORDER BY id DESC";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+}
+
 $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -20,6 +39,24 @@ $contactos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <i class="bi bi-people-fill"></i>
             Agenda de contactos
         </h2>
+
+        <form method="GET" action="index.php" class="search-form">
+        <input 
+            type="text" 
+            name="buscar" 
+            placeholder="Buscar contacto..." 
+            value="<?php echo htmlspecialchars($buscar); ?>"
+        >
+        <button type="submit">
+            <i class="bi bi-search"></i>
+        </button>
+        </form>
+
+        <?php if (!empty($buscar)): ?>
+        <a href="index.php" style="font-size: .8rem;">Limpiar búsqueda</a>
+        <?php endif; ?>
+
+
         <a href="crear.php" class="btn-new-contact">
             <i class="bi bi-plus-circle-fill"></i>
             Nuevo contacto

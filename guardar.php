@@ -20,11 +20,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $notas = htmlspecialchars($_POST["notas"]);
 
     //imagen
-    $foto = $_FILES["foto"]["name"];
+    // Validar que exista archivo
+if ($_FILES["foto"]["error"] !== 0) {
+    die("La foto es obligatoria");
+}
+
+// Validar tipo de archivo
+$tiposPermitidos = ["image/jpeg", "image/png", "image/jpg"];
+
+    if (!in_array($_FILES["foto"]["type"], $tiposPermitidos)) {
+        die("Solo se permiten imágenes JPG o PNG");
+    }
+
+// Evitar nombres duplicados (opcional pero PRO)
+    $foto = uniqid() . "_" . $_FILES["foto"]["name"];
     $ruta = "uploads/" . $foto;
 
     move_uploaded_file($_FILES["foto"]["tmp_name"], $ruta);
-
     //insert con prepared statement
     $sql = "INSERT INTO contactos 
             (nombre, apellido, telefono, foto, email, direccion, notas)

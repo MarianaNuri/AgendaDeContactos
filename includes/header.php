@@ -23,6 +23,22 @@
             Agenda de Contactos
         </h1>
 
+        <!-- barra de búsqueda en el header -->
+        <form method="GET" action="index.php" class="header-search-bar">
+            <div class="header-search-wrapper">
+                <i class="bi bi-search"></i>
+                <input 
+                    type="text" 
+                    name="buscar" 
+                    placeholder="Buscar contacto..."
+                    value="<?php echo isset($_GET['buscar']) ? htmlspecialchars($_GET['buscar']) : ''; ?>"
+                >
+            </div>
+            <button type="submit" class="header-btn-search">
+                <i class="bi bi-search"></i>
+            </button>
+        </form>
+
         <nav class="header-nav-desktop">
             <a href="index.php">Inicio</a>
             <a href="crear.php">Nuevo</a>
@@ -30,7 +46,7 @@
     </div>
 </header>
 
-<!-- Overlay oscuro al abrir sidebar -->
+<!-- overlay oscuro al abrir sidebar -->
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
 
 <?php include("includes/menu.php"); ?>
